@@ -44,7 +44,7 @@ def item_info(itemid):
 
 
 @app.route("/items/", methods=['GET'])
-def movie_record():
+def item_record():
     result_raw = Item.query.all()
     result = [item.to_dict() for item in result_raw]
     return jsonify(result)
