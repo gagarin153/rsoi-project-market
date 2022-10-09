@@ -4,6 +4,7 @@ import requests
 
 
 ITEMS_PATH = 'http://127.0.0.1:5001/'
+CART_PATH = 'http://127.0.0.1:5002/'
 USERS_PATH = 'http://127.0.0.1:5003/'
 
 app = Flask(__name__)
@@ -34,4 +35,11 @@ def check_token():
 @app.route("/items/<path>", methods=['GET'])
 def items_proxy(path):
     response = redirect(request, ITEMS_PATH)
+    return Response(response['content'], response['status_code'], response['headers'])
+
+@app.errorhandler(404)
+@app.route("/cart/<path>", methods=['GET', 'POST', 'DELETE'])
+def cart_proxy(path):
+    print(path)
+    response = redirect(request, CART_PATH)
     return Response(response['content'], response['status_code'], response['headers'])
