@@ -37,8 +37,14 @@ def delete_item():
     return jsonify({'ok': 'true'})
 
 @app.route("/cart/items/<userId>", methods=['GET'])
-def item_record(userId):
+def cart_record(userId):
     result_raw = CartItem.query.filter(CartItem.userId == userId)
     result = [item.to_dict() for item in result_raw]
     return jsonify(result)
+
+@app.route("/cart/items/<userId>", methods=['DELETE'])
+def delete_cart_record(userId):
+    CartItem.query.filter(CartItem.userId == userId).delete()
+    db.session.commit()
+    return jsonify({'ok': 'true'})
 
