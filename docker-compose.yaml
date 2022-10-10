@@ -18,18 +18,24 @@ services:
     command: flask run --host 0.0.0.0
     ports:
       - "5005:5005"
+    links:
+      - cart_service
       
   cart_service:
     build: ./catalogue
     command: flask run --host 0.0.0.0
     ports:
       - "5002:5002"
+    links:
+      - catalogue_service
 
   api_gateway:
     build: ./apigateway
     command: flask run --host 0.0.0.0
     ports:
-      - "5000:5000"
+      - "5020:5020"
     links:
       - auth_service
       - catalogue_service
+      - cart_service
+      - checkout_service
