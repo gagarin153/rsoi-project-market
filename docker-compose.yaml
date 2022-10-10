@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  auth_service:
+    build: ./auth
+    command: flask run --host 0.0.0.0
+    ports:
+      - "5003:5003"
+
+  catalogue_service:
+    build: ./catalogue
+    command: flask run --host 0.0.0.0
+    ports:
+      - "5001:5001"
+      
+  checkout_service:
+    build: ./catalogue
+    command: flask run --host 0.0.0.0
+    ports:
+      - "5005:5005"
+      
+  cart_service:
+    build: ./catalogue
+    command: flask run --host 0.0.0.0
+    ports:
+      - "5002:5002"
+
+  api_gateway:
+    build: ./apigateway
+    command: flask run --host 0.0.0.0
+    ports:
+      - "5000:5000"
+    links:
+      - auth_service
+      - catalogue_service

@@ -2,11 +2,18 @@ from .redirector import redirect
 from flask import Flask, request, Response, make_response
 import requests
 
+#Для локального запуска
+# ITEMS_PATH = 'http://127.0.0.1:5001/'
+# CART_PATH = 'http://127.0.0.1:5002/'
+# USERS_PATH = 'http://127.0.0.1:5003/'
+# CHECKOUT_PATH = 'http://127.0.0.1:5005/'
 
-ITEMS_PATH = 'http://127.0.0.1:5001/'
-CART_PATH = 'http://127.0.0.1:5002/'
-USERS_PATH = 'http://127.0.0.1:5003/'
-CHECKOUT_PATH = 'http://127.0.0.1:5005/'
+#Для docker-compose
+ITEMS_PATH = 'http://catalogue_service:5001/' #для docker-compose
+CART_PATH = 'http://cart_service:5002/'
+USERS_PATH = 'http://auth_service:5003/'
+CHECKOUT_PATH = 'http://checkout_service:5005/'
+
 
 app = Flask(__name__)
 
@@ -17,7 +24,7 @@ def check_token():
     if('/items/' in request.path):
         return
     else:
-        users_full_path = 'http://127.0.0.1:5003/user/token'
+        users_full_path = USERS_PATH + 'user/token'
         response = requests.request(
             method='GET',
             url=users_full_path,
