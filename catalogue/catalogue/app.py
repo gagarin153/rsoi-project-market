@@ -17,7 +17,7 @@ from .models import Item
 def add_item():
     data = request.get_json()
 
-    new_item = Item(title=data['title'], price=data['price'], rating=data['rating'], amount=data['amount'])
+    new_item = Item(title=data['title'], price=data['price'], rating=data['rating'], amount=data['amount'], type=data['type'], imageURL=data['imageURL'])
     db.session.add(new_item)
     db.session.commit()
     return jsonify({'ok': 'true'})
