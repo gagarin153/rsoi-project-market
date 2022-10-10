@@ -41,11 +41,11 @@ def sign_up():
 @app.route('/user/login/', methods=['POST'])
 def sign_in():
     auth = request.authorization
+
     if not auth or not auth.username or not auth.password:
         return make_response('could not verify', 401, {'Authentication': 'login required"'})
 
     user = User.query.filter_by(name=auth.username).first()
-
     if check_password_hash(user.password, auth.password):
         token = jwt.encode(
             {'public_id': user.public_id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=45)},

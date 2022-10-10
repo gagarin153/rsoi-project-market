@@ -1,0 +1,3 @@
+target 'Market-ios' do
+  pod 'Alamofire'
+end
