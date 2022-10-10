@@ -8,7 +8,7 @@ enum NetworkError: Error {
 final class AuthServiceManager {
     
     static let shared = AuthServiceManager()
-    let storage = Storage()
+    private let storage = Storage()
     
     private init() { }
     
@@ -31,6 +31,7 @@ final class AuthServiceManager {
         ).response { [weak self] response in
             if let error = response.error {
                 completion?(.failure(error))
+                return
             }
             
             guard let token = convertDataToDictionary(data: response.data)["token"] as? String
@@ -61,6 +62,7 @@ final class AuthServiceManager {
         ).response { [weak self] response in
             if let error = response.error {
                 completion?(.failure(error))
+                return
             }
             
             self?.fetchToken(

@@ -17,7 +17,13 @@ class RootViewController: UITabBarController {
     private func setupTabbar() {
         view.backgroundColor = .systemBackground
         tabBar.tintColor = .label
-        tabBar.backgroundColor = .yellow.withAlphaComponent(0.5)
+        tabBar.backgroundColor = .mainYellow
+        
+        let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
+        tabBarAppearance.backgroundColor = .mainYellow
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
     }
     
     private func setupVCs() {

@@ -108,8 +108,8 @@ final class LoginViewController: UIViewController {
             switch result {
             case .success:
                 self?.dismiss(animated: true, completion: self?.completion)
-            case let .failure(error):
-                print(error)
+            case .failure:
+                self?.presentAlert()
             }
         }
     }
