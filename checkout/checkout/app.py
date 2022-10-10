@@ -27,7 +27,7 @@ def options(userId):
 
     return jsonify({'items': items, 'totalPrice': total_price, **options_mock()})
 
-@app.route("/checkout/order/<userId>", methods=['GET'])
+@app.route("/checkout/order/<userId>", methods=['POST'])
 def order(userId):
     cart_items_full_path = 'http://127.0.0.1:5002/cart/items/' + str(userId)
 
