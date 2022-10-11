@@ -34,13 +34,17 @@ final class AuthServiceManager {
                 return
             }
             
-            guard let token = convertDataToDictionary(data: response.data)["token"] as? String
+            let dict = convertDataToDictionary(data: response.data)
+            guard
+                let token = dict["token"] as? String,
+                let userId = dict["public_id"] as? String
             else {
                 completion?(.failure(NetworkError.defaultError))
                 return
             }
             
             User.shared.token = token
+            User.shared.userId = userId
             self?.storage.set(value: login, for: StorageKeys.name.rawValue)
             self?.storage.set(value: password, for: StorageKeys.password.rawValue)
             

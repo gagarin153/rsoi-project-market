@@ -51,6 +51,6 @@ def sign_in():
             {'public_id': user.public_id, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=45)},
             app.config['SECRET_KEY'], "HS256")
 
-        return jsonify({'token': token})
+        return jsonify({'token': token, 'public_id': user.public_id})
 
     return make_response('could not verify', 401, {'Authentication': 'login required'})

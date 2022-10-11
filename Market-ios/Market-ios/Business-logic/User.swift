@@ -8,9 +8,11 @@ final class User {
             if token == nil {
                 storage.removeValue(for: StorageKeys.name.rawValue)
                 storage.removeValue(for: StorageKeys.password.rawValue)
+                userId = nil
             }
         }
     }
+    var userId: String?
     
     private init() {}
 }

@@ -14,6 +14,7 @@
 		2F266D9D28F42799007FFFBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F266D9C28F42799007FFFBF /* Assets.xcassets */; };
 		2F266DA028F42799007FFFBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F266D9E28F42799007FFFBF /* LaunchScreen.storyboard */; };
 		2F266DAC28F42C1E007FFFBF /* MordaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F266DAB28F42C1E007FFFBF /* MordaViewController.swift */; };
+		2F31D70F28F4E24D00ACBF23 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F31D70E28F4E24D00ACBF23 /* ItemViewController.swift */; };
 		2F4CE46728F43B8B00BAE541 /* AuthServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CE46628F43B8B00BAE541 /* AuthServiceManager.swift */; };
 		2F8D138C28F4412700033CEE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D138B28F4412700033CEE /* Storage.swift */; };
 		2F8D138E28F4416B00033CEE /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D138D28F4416B00033CEE /* StorageKeys.swift */; };
@@ -40,6 +41,7 @@
 		2F266D9F28F42799007FFFBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F266DA128F42799007FFFBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F266DAB28F42C1E007FFFBF /* MordaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MordaViewController.swift; sourceTree = "<group>"; };
+		2F31D70E28F4E24D00ACBF23 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		2F4CE46628F43B8B00BAE541 /* AuthServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceManager.swift; sourceTree = "<group>"; };
 		2F8D138B28F4412700033CEE /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		2F8D138D28F4416B00033CEE /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
@@ -140,9 +142,18 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		2F31D70D28F4E23400ACBF23 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				2F31D70E28F4E24D00ACBF23 /* ItemViewController.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
 		2F4CE46428F43B5600BAE541 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2F31D70D28F4E23400ACBF23 /* Item */,
 				2F266DAA28F42BE4007FFFBF /* Profile */,
 				2F266DA928F42BDE007FFFBF /* Cart */,
 				2F266DA828F42BD1007FFFBF /* Morda */,
@@ -313,6 +324,7 @@
 				2F8D13A228F4C3CE00033CEE /* ServiceManager.swift in Sources */,
 				2F8D139528F44FA800033CEE /* User.swift in Sources */,
 				2F8D138E28F4416B00033CEE /* StorageKeys.swift in Sources */,
+				2F31D70F28F4E24D00ACBF23 /* ItemViewController.swift in Sources */,
 				2F4CE46728F43B8B00BAE541 /* AuthServiceManager.swift in Sources */,
 				2F266D9628F42798007FFFBF /* SceneDelegate.swift in Sources */,
 			);

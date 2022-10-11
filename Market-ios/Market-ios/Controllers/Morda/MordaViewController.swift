@@ -35,7 +35,7 @@ final class MordaViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
         ])
@@ -69,6 +69,14 @@ extension MordaViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        
+        let vc = ItemViewController(itemId: items[indexPath.item].id)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension MordaViewController: UICollectionViewDelegateFlowLayout {
