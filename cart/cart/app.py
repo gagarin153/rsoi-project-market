@@ -22,7 +22,7 @@ def add_item():
         allow_redirects=False)
     content = response.json()
 
-    new_item = CartItem(userId=userId, itemId=itemId, title=content['title'], price=content['price'], imageURL="")
+    new_item = CartItem(userId=userId, itemId=itemId, title=content['title'], price=content['price'], imageURL=content['imageURL'])
 
     db.session.add(new_item)
     db.session.commit()
