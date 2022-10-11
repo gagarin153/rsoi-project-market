@@ -58,7 +58,11 @@ final class AuthServiceManager {
         password: String,
         completion: ((Result<Void, Error>) -> Void)?
     ) {
-        let parameters = [StorageKeys.name.rawValue: login, StorageKeys.password.rawValue: password]
+        let parameters: [String: AnyHashable] = [
+            StorageKeys.name.rawValue: login,
+            StorageKeys.password.rawValue: password,
+            "admin": false
+        ]
         
         AF.request(URLPaths.registrationLocal.rawValue,
                    method: .post,

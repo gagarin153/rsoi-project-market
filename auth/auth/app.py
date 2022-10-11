@@ -30,7 +30,7 @@ def sign_up():
     data = request.get_json()
     hashed_password = generate_password_hash(data['password'], method='sha256')
 
-    new_user = User(public_id=str(uuid.uuid4()), name=data['name'], password=hashed_password, admin=False)
+    new_user = User(public_id=str(uuid.uuid4()), name=data['name'], password=hashed_password, admin=data['admin'])
     db.session.add(new_user)
     db.session.commit()
     return jsonify({'message': 'registered successfully'})
