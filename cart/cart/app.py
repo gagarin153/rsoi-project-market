@@ -11,8 +11,8 @@ def add_item():
     userId = data['userId']
     itemId = data['itemId']
 
-    #item_full_path = 'http://127.0.0.1:5001/items/' + str(itemId)
-    item_full_path = 'http://catalogue_service:5001/items/' + str(itemId)
+    item_full_path = 'http://127.0.0.1:5001/items/' + str(itemId)
+    # item_full_path = 'http://catalogue_service:5001/items/' + str(itemId)
 
     response = requests.request(
         method='GET',

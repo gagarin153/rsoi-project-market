@@ -3,16 +3,16 @@ from flask import Flask, request, Response, make_response
 import requests
 
 #Для локального запуска
-# ITEMS_PATH = 'http://127.0.0.1:5001/'
-# CART_PATH = 'http://127.0.0.1:5002/'
-# USERS_PATH = 'http://127.0.0.1:5003/'
-# CHECKOUT_PATH = 'http://127.0.0.1:5005/'
+ITEMS_PATH = 'http://127.0.0.1:5001/'
+CART_PATH = 'http://127.0.0.1:5002/'
+USERS_PATH = 'http://127.0.0.1:5003/'
+CHECKOUT_PATH = 'http://127.0.0.1:5005/'
 
 #Для docker-compose
-ITEMS_PATH = 'http://catalogue_service:5001/' #для docker-compose
-CART_PATH = 'http://cart_service:5002/'
-USERS_PATH = 'http://auth_service:5003/'
-CHECKOUT_PATH = 'http://checkout_service:5005/'
+# ITEMS_PATH = 'http://catalogue_service:5001/' #для docker-compose
+# CART_PATH = 'http://cart_service:5002/'
+# USERS_PATH = 'http://auth_service:5003/'
+# CHECKOUT_PATH = 'http://checkout_service:5005/'
 
 
 app = Flask(__name__)
@@ -21,6 +21,7 @@ app = Flask(__name__)
 #выполняется перед КАЖДЫМ запросом.
 @app.before_request
 def check_token():
+    print(request.path)
     if('/items/' in request.path):
         return
     else:
@@ -48,10 +49,17 @@ def items_proxy():
     return Response(response['content'], response['status_code'], response['headers'])
 
 @app.errorhandler(404)
+@app.route("/cart/items/<path>", methods=['GET', 'DELETE'])
+def all_cart_proxy(path):
+    response = redirect(request, CART_PATH)
+    return Response(response['content'], response['status_code'], response['headers'])
+
+@app.errorhandler(404)
 @app.route("/cart/<path>", methods=['GET', 'POST', 'DELETE'])
 def cart_proxy(path):
     response = redirect(request, CART_PATH)
     return Response(response['content'], response['status_code'], response['headers'])
+
 
 @app.errorhandler(404)
 @app.route("/checkout/<path>", methods=['GET', 'POST'])

@@ -11,7 +11,7 @@ class ItemViewController: UIViewController {
     private let itemId: Int
     private var currentButtonState = ButtonState.notAdded {
         didSet {
-            
+            updatedButton()
         }
     }
     
@@ -130,13 +130,44 @@ class ItemViewController: UIViewController {
     }
     
     private func updatedButton() {
+        button.removeTarget(nil, action: nil, for: .allEvents)
         if currentButtonState == .added {
             button.backgroundColor = .lightGray.withAlphaComponent(0.3)
             button.setTitle("Товар уже в корзине", for: .normal)
+            button.addTarget(self, action: #selector(deleteFromCart), for: .touchUpInside)
         } else {
             button.backgroundColor = .mainYellow
             button.setTitle("В корзину", for: .normal)
             button.titleLabel?.text = "В корзину"
+            button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
+        }
+    }
+    
+    @objc private func addToCart() {
+        ServiceManager.shared.addOrDeleteFromCart(
+            with: itemId,
+            method: .post
+        ) { [weak self] result in
+            switch result {
+            case .success:
+                self?.currentButtonState = .added
+            case .failure:
+                print()
+            }
+        }
+    }
+    
+    @objc private func deleteFromCart() {
+        ServiceManager.shared.addOrDeleteFromCart(
+            with: itemId,
+            method: .delete
+        ) { [weak self] result in
+            switch result {
+            case .success:
+                self?.currentButtonState = .notAdded
+            case .failure:
+                print()
+            }
         }
     }
     

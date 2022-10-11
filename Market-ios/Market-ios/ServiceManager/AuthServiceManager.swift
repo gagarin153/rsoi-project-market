@@ -3,6 +3,7 @@ import Alamofire
 
 enum NetworkError: Error {
     case defaultError
+    case notLogin
 }
 
 final class AuthServiceManager {
