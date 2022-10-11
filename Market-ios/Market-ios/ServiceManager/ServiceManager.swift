@@ -153,4 +153,76 @@ final class ServiceManager {
             completion?(.success(items))
         }
     }
+    
+    func orderOPtions(
+        completion: ((Result<OrderOptions, Error>) -> Void)?
+    ) {
+        guard let userId = User.shared.userId, let token = User.shared.token else {
+            completion?(.failure(NetworkError.notLogin))
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "x-access-tokens": token,
+            "Accept": "application/json"
+        ]
+        
+        AF.request(
+            URLPaths.checkoutOptionsLocal.rawValue + String(userId),
+            method: .get,
+            headers: headers
+        ).response { response in
+            if let error = response.error {
+                completion?(.failure(error))
+                return
+            }
+            
+            guard let data = response.data else {
+                completion?(.failure(NetworkError.defaultError))
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            
+            var options: OrderOptions?
+            do {
+                options = try decoder.decode(OrderOptions.self, from: data)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            guard let options = options else {
+                return
+            }
+            
+            completion?(.success(options))
+        }
+    }
+    
+    func order(
+        completion: ((Result<Void, Error>) -> Void)?
+    ) {
+        guard let userId = User.shared.userId, let token = User.shared.token else {
+            completion?(.failure(NetworkError.notLogin))
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "x-access-tokens": User.shared.token ?? "",
+            "Accept": "application/json"
+        ]
+        
+        AF.request(
+                   URLPaths.checkoutOrderLocal.rawValue + String(userId),
+                   method: .post,
+                   headers: headers
+        ).response { response in
+            if let error = response.error {
+                completion?(.failure(error))
+                return
+            }
+            
+            completion?(.success(()))
+        }
+    }
 }

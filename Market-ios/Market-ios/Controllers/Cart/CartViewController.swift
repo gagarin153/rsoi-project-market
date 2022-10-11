@@ -17,6 +17,7 @@ final class CartViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = .label
         button.layer.cornerRadius = 20.0
+        button.addTarget(self, action: #selector(goToCheckout), for: .touchUpInside)
         
         return button
     }()
@@ -109,6 +110,20 @@ final class CartViewController: UIViewController {
         let okAction = UIAlertAction(title:"OK", style: .default, handler: {(alert:UIAlertAction!)-> Void in})
         dialog.addAction(okAction)
         self.present(dialog, animated:true, completion:nil)
+    }
+    
+   @objc private func goToCheckout() {
+       ServiceManager.shared.orderOPtions { [weak self] result in
+           switch result {
+           case let .success(options):
+               let vc = CheckoutViewController(options: options)
+               let navController = UINavigationController(rootViewController: vc)
+               navController.modalPresentationStyle = .fullScreen
+               self?.present(navController, animated: true, completion: nil)
+           case .failure:
+               self?.presentAlert()
+           }
+       }
     }
 }
 

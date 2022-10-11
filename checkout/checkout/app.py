@@ -9,8 +9,8 @@ from .models import CheckoutItem, UserOrder
 
 @app.route("/checkout/options/<userId>", methods=['GET'])
 def options(userId):
-    #cart_items_full_path = 'http://127.0.0.1:5002/cart/items/' + str(userId)
-    cart_items_full_path = 'http://cart_service:5002/cart/items/' + str(userId)
+    cart_items_full_path = 'http://127.0.0.1:5002/cart/items/' + str(userId)
+    # cart_items_full_path = 'http://cart_service:5002/cart/items/' + str(userId)
 
     response = requests.request(
         method='GET',
@@ -30,8 +30,8 @@ def options(userId):
 
 @app.route("/checkout/order/<userId>", methods=['POST'])
 def order(userId):
-    #cart_items_full_path = 'http://127.0.0.1:5002/cart/items/' + str(userId)
-    cart_items_full_path = 'http://cart_service:5002/cart/items/' + str(userId)
+    cart_items_full_path = 'http://127.0.0.1:5002/cart/items/' + str(userId)
+    # cart_items_full_path = 'http://cart_service:5002/cart/items/' + str(userId)
 
     response = requests.request(
         method='GET',

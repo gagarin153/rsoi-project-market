@@ -13,6 +13,9 @@ class RootViewController: UITabBarController {
         fetchToken()
     }
     
+    func goToMain() {
+        self.selectedIndex = 0
+    }
     
     private func setupTabbar() {
         view.backgroundColor = .systemBackground

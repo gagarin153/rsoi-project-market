@@ -17,6 +17,8 @@
 		2F31D70F28F4E24D00ACBF23 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F31D70E28F4E24D00ACBF23 /* ItemViewController.swift */; };
 		2F31D71128F5025A00ACBF23 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F31D71028F5025A00ACBF23 /* CartItem.swift */; };
 		2F31D71328F5135200ACBF23 /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F31D71228F5135200ACBF23 /* CartItemCell.swift */; };
+		2F31D71528F5287200ACBF23 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F31D71428F5287200ACBF23 /* CheckoutViewController.swift */; };
+		2F31D71828F529E100ACBF23 /* OrderOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F31D71728F529E100ACBF23 /* OrderOptions.swift */; };
 		2F4CE46728F43B8B00BAE541 /* AuthServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CE46628F43B8B00BAE541 /* AuthServiceManager.swift */; };
 		2F8D138C28F4412700033CEE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D138B28F4412700033CEE /* Storage.swift */; };
 		2F8D138E28F4416B00033CEE /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8D138D28F4416B00033CEE /* StorageKeys.swift */; };
@@ -46,6 +48,8 @@
 		2F31D70E28F4E24D00ACBF23 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		2F31D71028F5025A00ACBF23 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		2F31D71228F5135200ACBF23 /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
+		2F31D71428F5287200ACBF23 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		2F31D71728F529E100ACBF23 /* OrderOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderOptions.swift; sourceTree = "<group>"; };
 		2F4CE46628F43B8B00BAE541 /* AuthServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceManager.swift; sourceTree = "<group>"; };
 		2F8D138B28F4412700033CEE /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		2F8D138D28F4416B00033CEE /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
@@ -155,9 +159,18 @@
 			path = Item;
 			sourceTree = "<group>";
 		};
+		2F31D71628F5287800ACBF23 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				2F31D71428F5287200ACBF23 /* CheckoutViewController.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
 		2F4CE46428F43B5600BAE541 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2F31D71628F5287800ACBF23 /* Checkout */,
 				2F31D70D28F4E23400ACBF23 /* Item */,
 				2F266DAA28F42BE4007FFFBF /* Profile */,
 				2F266DA928F42BDE007FFFBF /* Cart */,
@@ -185,6 +198,7 @@
 				2F8D139428F44FA800033CEE /* User.swift */,
 				2F8D13A328F4C65100033CEE /* Item.swift */,
 				2F31D71028F5025A00ACBF23 /* CartItem.swift */,
+				2F31D71728F529E100ACBF23 /* OrderOptions.swift */,
 			);
 			path = "Business-logic";
 			sourceTree = "<group>";
@@ -318,6 +332,7 @@
 				2F266D9828F42798007FFFBF /* RootViewController.swift in Sources */,
 				2F8D139C28F4863A00033CEE /* LoginViewController.swift in Sources */,
 				2F8D139E28F492C500033CEE /* ViewController+Extensions.swift in Sources */,
+				2F31D71828F529E100ACBF23 /* OrderOptions.swift in Sources */,
 				2F266D9428F42798007FFFBF /* AppDelegate.swift in Sources */,
 				2F8D139A28F474C900033CEE /* String+Extensions.swift in Sources */,
 				2F8D13A628F4CB5C00033CEE /* ItemCell.swift in Sources */,
@@ -325,6 +340,7 @@
 				2F8D139828F46A9D00033CEE /* Color+Extensions.swift in Sources */,
 				2F266DAC28F42C1E007FFFBF /* MordaViewController.swift in Sources */,
 				2F8D138C28F4412700033CEE /* Storage.swift in Sources */,
+				2F31D71528F5287200ACBF23 /* CheckoutViewController.swift in Sources */,
 				2F8D13A428F4C65100033CEE /* Item.swift in Sources */,
 				2F8D139128F447D800033CEE /* URLPaths.swift in Sources */,
 				2F31D71128F5025A00ACBF23 /* CartItem.swift in Sources */,
